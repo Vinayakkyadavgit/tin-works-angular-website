@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="onToggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div>Logo</div>
+    <div fxFlex fxLayoutAlign="flex-end " fxHide.lt-sm>
+        <ul fxLayout="row" fxLayoutGap="20px" class="nav-items ">
+            <li>
+                <a routerLink="login"> Login</a></li>
+            <li>
+                <a click="onLogout()"> Logout</a>
+            </li>
+        </ul>
+    </div>
+</mat-toolbar>

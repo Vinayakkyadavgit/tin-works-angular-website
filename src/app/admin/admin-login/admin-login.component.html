@@ -1,0 +1,21 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card>
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+            <form fxFlexAlign="center" fxFlexAlign="center" [formGroup]="loginForm" (ngSubmit)="onLoginForm()" fxLayout="column" fxLayoutAlign=" center space-between">
+                <mat-form-field>
+                    <mat-label>Please Enter Email</mat-label>
+                    <input type="text" formControlName="email" matInput placeholder="Email">
+                    <mat-error>Please enter valid email</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Please Enter Password</mat-label>
+                    <input type="text" matInput placeholder="Password" formControlName="password">
+                    <mat-error>Please enter valid Password</mat-error>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+
+        <button mat-raised-button color="accent" type="submit">Login</button>
+    </mat-card>
+</div>

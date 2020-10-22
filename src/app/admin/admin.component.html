@@ -1,0 +1,11 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenavRef>
+        <app-admin-sidebar (sideNavClick)="sidenavRef.close()"></app-admin-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-admin-header (onMenuToggle)="sidenavRef.toggle()"></app-admin-header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>
