@@ -1,3 +1,4 @@
+import { AuthStore } from './../services/auth.store';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
@@ -7,16 +8,17 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class AdminSidebarComponent implements OnInit {
   @Output() sideNavClick = new EventEmitter<void>();
-  constructor() { }
+  constructor(public auth: AuthStore) { }
 
   ngOnInit(): void {
   }
 
-  onSideNavClick(){
+  onSideNavClick() {
     this.sideNavClick.emit();
   }
-  onLogout(){
+  onLogout() {
     this.sideNavClick.emit();
+    this.auth.logout();
   }
 
 }

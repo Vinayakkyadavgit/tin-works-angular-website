@@ -6,9 +6,9 @@
     <div fxFlex fxLayoutAlign="flex-end " fxHide.lt-sm>
         <ul fxLayout="row" fxLayoutGap="20px" class="nav-items ">
             <li>
-                <a routerLink="login"> Login</a></li>
+                <a routerLink="login" *ngIf="(auth.isLoggedOut$ | async)">Login</a></li>
             <li>
-                <a click="onLogout()"> Logout</a>
+                <a (click)="onLogout()" *ngIf="(auth.isLoggedIn$ | async)">Logout</a>
             </li>
         </ul>
     </div>

@@ -1,3 +1,4 @@
+import { AuthStore } from './../services/auth.store';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -7,7 +8,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class AdminHeaderComponent implements OnInit {
   @Output() onMenuToggle = new EventEmitter<void>();
-  constructor() { }
+
+  constructor(public auth: AuthStore) { }
 
   ngOnInit(): void {
   }
@@ -15,8 +17,8 @@ export class AdminHeaderComponent implements OnInit {
   onToggle() {
     this.onMenuToggle.emit();
   }
-  onLogout(){
-
+  onLogout() {
+    this.auth.logout();
   }
 
 }

@@ -10,10 +10,11 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminLoginComponent, AdminHeaderComponent, AdminSidebarComponent],
+  declarations: [AdminComponent, AdminLoginComponent, AdminHeaderComponent, AdminSidebarComponent, DashboardComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
