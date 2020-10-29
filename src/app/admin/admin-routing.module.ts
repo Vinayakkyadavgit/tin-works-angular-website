@@ -22,7 +22,8 @@ const routes: Routes = [
       },
       {
         path: 'banner-master',
-        component: BannerMasterComponent
+        component: BannerMasterComponent,
+        canActivate: [AuthGuardService]
       }
     ]
     ,

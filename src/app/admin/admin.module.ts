@@ -11,6 +11,8 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token-interceptor';
 import { BannerMasterComponent } from './banner-master/banner-master.component';
 
 
@@ -28,7 +30,13 @@ import { BannerMasterComponent } from './banner-master/banner-master.component';
     AdminRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule,
-  ]
+    ReactiveFormsModule
+  ],
+  providers : [{ 
+                provide: HTTP_INTERCEPTORS,
+                useClass: TokenInterceptor,
+                multi: true 
+               }
+   ]
 })
 export class AdminModule { }

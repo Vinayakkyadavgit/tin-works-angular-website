@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { UserData } from './../model/userData';
 import { Login } from './../model/login';
 import { environment } from './../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -25,13 +24,13 @@ export class AuthStore {
     this.autoLogin();
   }
 
-  login(loginRequestBody: Login): Observable<UserData> {
+  login(loginRequestBody: Login): Observable<User> {
     return this.http
-      .post<{ [key: string]: UserData }>(
+      .post<{ [key: string]: User }>(
         '/api/Auth/login',
         loginRequestBody,
         {
-          headers: new HttpHeaders({ 'AUTH_KEY': environment.AUTH_KEY })
+         // headers: new HttpHeaders({ 'AUTH_KEY': environment.AUTH_KEY })
         }
       )
       .pipe(
@@ -45,6 +44,7 @@ export class AuthStore {
             this.subject.next(user);
             this.autoLogout(expiredAtMiliSec);  // time in mili seconds
             localStorage.setItem('user_data', JSON.stringify(user));
+           
           }),
         shareReplay(),
         catchError(error => {
@@ -68,6 +68,7 @@ export class AuthStore {
 
   getLocalData() {
     const user = JSON.parse(localStorage.getItem('user_data'));
+    
     if (user) {
       const lastLogin = new Date(user.last_login_date);
       const expiredAt = new Date(user.expired_at);
