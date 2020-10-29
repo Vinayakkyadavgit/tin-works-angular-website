@@ -1,9 +1,9 @@
 export class User {
   constructor(
-    public admin_id: number,
+    public ADMIN_ID: number,
     public name: string,
     public last_login_date: Date,
-    private expired_at: Date,
+    public expired_at: Date,
     private _AUTH_TOKEN: string,
   ) { }
 

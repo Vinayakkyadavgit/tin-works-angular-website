@@ -11,16 +11,24 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BannerMasterComponent } from './banner-master/banner-master.component';
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminLoginComponent, AdminHeaderComponent, AdminSidebarComponent, DashboardComponent],
+  declarations: [
+    AdminComponent,
+    AdminLoginComponent,
+    AdminHeaderComponent,
+    AdminSidebarComponent,
+    DashboardComponent,
+    BannerMasterComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class AdminModule { }

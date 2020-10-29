@@ -31,7 +31,7 @@ export class AuthStore {
         '/api/Auth/login',
         loginRequestBody,
         {
-          headers: new HttpHeaders({ 'AUTH-KEY': environment.AUTH_KEY })
+          headers: new HttpHeaders({ 'AUTH_KEY': environment.AUTH_KEY })
         }
       )
       .pipe(
@@ -40,7 +40,7 @@ export class AuthStore {
           resData => {
             const lastLoginDate = new Date(resData.last_login_date);
             const expiredAt = new Date(resData.expired_at);
-            const user = new User(resData.admin_id, resData.name, lastLoginDate, expiredAt, resData.AUTH_TOKEN);
+            const user = new User(resData.ADMIN_ID, resData.name, lastLoginDate, expiredAt, resData.AUTH_TOKEN);
             const expiredAtMiliSec = (expiredAt.getTime() - new Date().getTime());
             this.subject.next(user);
             this.autoLogout(expiredAtMiliSec);  // time in mili seconds
@@ -66,23 +66,33 @@ export class AuthStore {
     }, expireTimeinMiliSeconds);
   }
 
-  autoLogin() {
+  getLocalData() {
     const user = JSON.parse(localStorage.getItem('user_data'));
     if (user) {
       const lastLogin = new Date(user.last_login_date);
       const expiredAt = new Date(user.expired_at);
-      const loadedUser = new User(user.admin_id, user.name, lastLogin, expiredAt, user._AUTH_TOKEN);
-      console.log(loadedUser);
+      const loadedUser = new User(user.ADMIN_ID, user.name, lastLogin, expiredAt, user._AUTH_TOKEN);
+      return loadedUser;
+    } else {
+      return;
+    }
+
+  }
+
+  autoLogin() {
+    const loadedUser = this.getLocalData();
+    console.log(loadedUser);
+    if (loadedUser) {
       if (loadedUser.AUTH_TOKEN) {
         this.subject.next(loadedUser);
-        const expiredDate = expiredAt.getTime() - new Date().getTime();
-        console.log(expiredDate);
-        console.log(expiredAt.getTime());
+        const expiredDate = loadedUser.expired_at.getTime() - new Date().getTime();
         this.autoLogout(expiredDate);  // time in mili seconds
       }
     } else {
       return;
     }
   }
+
+
 }
 
