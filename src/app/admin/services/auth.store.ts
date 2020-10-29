@@ -1,5 +1,4 @@
 import { Router } from '@angular/router';
-import { UserData } from './../model/userData';
 import { Login } from './../model/login';
 import { environment } from './../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -25,13 +24,13 @@ export class AuthStore {
     this.autoLogin();
   }
 
-  login(loginRequestBody: Login): Observable<UserData> {
+  login(loginRequestBody: Login): Observable<User> {
     return this.http
-      .post<{ [key: string]: UserData }>(
+      .post<{ [key: string]: User }>(
         '/api/Auth/login',
         loginRequestBody,
         {
-          headers: new HttpHeaders({ 'AUTH_KEY': environment.AUTH_KEY })
+         // headers: new HttpHeaders({ 'AUTH_KEY': environment.AUTH_KEY })
         }
       )
       .pipe(

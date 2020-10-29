@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,13 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  callMe(){
-      this.http.get( '/api/getData').subscribe(data => console.log(data));
-  }
-
+ 
 }
