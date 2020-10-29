@@ -29,9 +29,6 @@ export class AuthStore {
       .post<{ [key: string]: User }>(
         '/api/Auth/login',
         loginRequestBody,
-        {
-         // headers: new HttpHeaders({ 'AUTH_KEY': environment.AUTH_KEY })
-        }
       )
       .pipe(
         map(data => data.payload),
@@ -44,7 +41,7 @@ export class AuthStore {
             this.subject.next(user);
             this.autoLogout(expiredAtMiliSec);  // time in mili seconds
             localStorage.setItem('user_data', JSON.stringify(user));
-           
+
           }),
         shareReplay(),
         catchError(error => {
@@ -68,7 +65,7 @@ export class AuthStore {
 
   getLocalData() {
     const user = JSON.parse(localStorage.getItem('user_data'));
-    
+
     if (user) {
       const lastLogin = new Date(user.last_login_date);
       const expiredAt = new Date(user.expired_at);

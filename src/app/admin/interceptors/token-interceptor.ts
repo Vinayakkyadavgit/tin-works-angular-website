@@ -24,11 +24,11 @@ export class TokenInterceptor implements HttpInterceptor {
         {
             request = request.clone({
                 setHeaders: {
-                    'AUTH_KEY': environment.AUTH_KEY 
+                    'AUTH_KEY': environment.AUTH_KEY
                 }
             });
             return next.handle(request);
         }
-       
+
     }
 }

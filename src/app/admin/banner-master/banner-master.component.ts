@@ -1,5 +1,5 @@
 import { Banner } from './../model/banner.model';
-import { BannerService } from './../services/banner.service';
+import { BannerStore } from '../services/banner.store';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -13,10 +13,12 @@ export class BannerMasterComponent implements OnInit {
   displayedColumns = ['banner_id', 'banner_image', 'banner_text', 'banner_text_position', 'add_date', 'edit'];
   bannerDataSource = new MatTableDataSource<Banner>();
 
-  constructor(private bannerService: BannerService) { }
+  constructor(private bannerStore: BannerStore) { }
 
   ngOnInit(): void {
-    this.bannerDataSource.data = this.bannerService.getBanner();
+    this.bannerStore.getBanner().subscribe(res => {
+      this.bannerDataSource.data = res;
+    });
   }
 
 }
