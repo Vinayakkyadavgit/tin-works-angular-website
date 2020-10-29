@@ -11,7 +11,8 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token-interceptor';
 
 @NgModule({
   declarations: [AdminComponent, AdminLoginComponent, AdminHeaderComponent, AdminSidebarComponent, DashboardComponent],
@@ -21,6 +22,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MaterialModule,
     FlexLayoutModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers : [{ 
+                provide: HTTP_INTERCEPTORS,
+                useClass: TokenInterceptor,
+                multi: true 
+               }
+   ]
 })
 export class AdminModule { }
