@@ -4,6 +4,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BannerMasterComponent } from './banner-master/banner-master.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
         path: 'login',
         component: AdminLoginComponent
       },
+      {
+        path: 'banner-master',
+        component: BannerMasterComponent
+      }
     ]
     ,
   },

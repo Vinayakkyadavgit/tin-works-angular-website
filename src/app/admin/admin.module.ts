@@ -13,9 +13,18 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token-interceptor';
+import { BannerMasterComponent } from './banner-master/banner-master.component';
+
 
 @NgModule({
-  declarations: [AdminComponent, AdminLoginComponent, AdminHeaderComponent, AdminSidebarComponent, DashboardComponent],
+  declarations: [
+    AdminComponent,
+    AdminLoginComponent,
+    AdminHeaderComponent,
+    AdminSidebarComponent,
+    DashboardComponent,
+    BannerMasterComponent,
+  ],
   imports: [
     CommonModule,
     AdminRoutingModule,
