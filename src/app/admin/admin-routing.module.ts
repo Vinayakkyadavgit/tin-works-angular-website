@@ -1,24 +1,29 @@
-import { AuthGuardService } from '../admin-login/auth.guard';
+import { AuthGuardService } from './admin-login/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BannerMasterComponent } from './banner-master/banner-master.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
   {
-    path: 'admin',
-    component: AdminComponent,
+    path: '',
+    component : AdminComponent,
     children: [
+      {
+        path: 'login',
+        component: AdminLoginComponent,
+      },
       {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
       },
       {
         path: 'banner-master',
         component: BannerMasterComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
       }
     ]
   }

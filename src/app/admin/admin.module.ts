@@ -13,11 +13,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { BannerMasterComponent } from './banner-master/banner-master.component';
-
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
+    AdminLoginComponent,
     AdminHeaderComponent,
     AdminSidebarComponent,
     DashboardComponent,
@@ -28,7 +29,7 @@ import { BannerMasterComponent } from './banner-master/banner-master.component';
     AdminRoutingModule,
     MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers : [{ 
                 provide: HTTP_INTERCEPTORS,

@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { AuthStore } from '../admin/services/auth.store';
+import { AuthStore } from '../services/auth.store';
 import { Observable } from 'rxjs';
 import {  ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Injectable } from '@angular/core';
@@ -19,7 +19,7 @@ export class AuthGuardService implements CanActivate {
         if (user) {
           return true;
         } else {
-          return this.router.createUrlTree(['login']);
+          return this.router.createUrlTree(['admin/login']);
         }
 
       }))
