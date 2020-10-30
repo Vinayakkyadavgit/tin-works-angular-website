@@ -1,10 +1,9 @@
-import { AuthGuardService } from './admin-login/auth.guard';
+import { AuthGuardService } from '../admin-login/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { AdminComponent } from './admin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BannerMasterComponent } from './banner-master/banner-master.component';
+import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
   {
@@ -17,18 +16,12 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
       },
       {
-        path: 'login',
-        component: AdminLoginComponent
-      },
-      {
         path: 'banner-master',
         component: BannerMasterComponent,
         canActivate: [AuthGuardService]
       }
     ]
-    ,
-  },
-
+  }
 ];
 
 @NgModule({

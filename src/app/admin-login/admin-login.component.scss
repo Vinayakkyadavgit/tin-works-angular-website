@@ -1,0 +1,11 @@
+.container {
+    height: 100vh;
+    background: #0C2B9E;
+    background: -webkit-linear-gradient(left, #0C2B9E, #0ABACC);
+    background: -moz-linear-gradient(left, #0C2B9E, #0ABACC);
+    background: linear-gradient(to right, #0C2B9E, #0ABACC);
+}
+
+mat-form-field {
+    width: 300px;
+}
