@@ -31,11 +31,11 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     FlexLayoutModule,
     ReactiveFormsModule,
   ],
-  providers : [{ 
-                provide: HTTP_INTERCEPTORS,
-                useClass: TokenInterceptor,
-                multi: true 
-               }
-   ]
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }
+  ]
 })
 export class AdminModule { }

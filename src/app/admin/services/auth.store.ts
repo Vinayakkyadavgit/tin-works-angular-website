@@ -53,7 +53,7 @@ export class AuthStore {
   logout() {
     this.subject.next(null);
     localStorage.removeItem('user_data');
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl('admin/login');
     clearTimeout(this.logoutTimer);
   }
 

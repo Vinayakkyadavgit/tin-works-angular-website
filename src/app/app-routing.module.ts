@@ -4,8 +4,8 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 
 const routes: Routes = [
   {
-      path: 'admin',
-      loadChildren: ()=> import('./admin/admin.module').then(m=>m.AdminModule)
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
 ];
 

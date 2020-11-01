@@ -8,8 +8,8 @@ import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component : AdminComponent,
+    path: 'admin',
+    component: AdminComponent,
     children: [
       {
         path: 'login',
@@ -26,8 +26,10 @@ const routes: Routes = [
         canActivate: [AuthGuardService],
       }
     ]
-  }
+  },
+
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
