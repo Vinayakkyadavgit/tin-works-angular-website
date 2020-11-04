@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BannerMasterComponent } from './banner-master/banner-master.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminComponent } from './admin.component';
+import { ProductMasterComponent } from './product-master/product-master.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,11 @@ const routes: Routes = [
       {
         path: 'banner-master',
         component: BannerMasterComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'product-master',
+        component: ProductMasterComponent,
         canActivate: [AuthGuardService],
       }
     ]

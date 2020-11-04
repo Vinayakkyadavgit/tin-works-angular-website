@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { BannerMasterComponent } from './banner-master/banner-master.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProductMasterComponent } from './product-master/product-master.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AdminSidebarComponent,
     DashboardComponent,
     BannerMasterComponent,
+    ProductMasterComponent,
   ],
   imports: [
     CommonModule,

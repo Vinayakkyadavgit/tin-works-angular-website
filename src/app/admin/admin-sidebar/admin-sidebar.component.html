@@ -4,6 +4,12 @@
         <mat-icon>input</mat-icon>
         <span class="nav-caption">Banner / Slider Master</span>
     </a>
+
+    <a mat-list-item [routerLink]="['/admin/banner-master']" (click)="onSideNavClick()" *ngIf="(auth.isLoggedIn$ | async)">
+        <mat-icon>input</mat-icon>
+        <span class="nav-caption">Product Master</span>
+    </a>
+
     <a mat-list-item [routerLink]="['login']" (click)="onSideNavClick()" *ngIf="(auth.isLoggedOut$ | async)">
         <mat-icon>input</mat-icon>
         <span class="nav-caption">Login</span>
