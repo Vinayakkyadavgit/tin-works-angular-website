@@ -1,8 +1,8 @@
-import { Banner } from './../../model/banner.model';
 import { BannerStore } from './../../services/banner.store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Banner } from '../../model/banner.model';
 
 @Component({
   selector: 'app-banner-dialog',
@@ -13,19 +13,19 @@ export class BannerDialogComponent implements OnInit {
   dialogTitle: string;
   bannerForm: FormGroup;
   imageLink: any;
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private fb: FormBuilder, private bannerStore: BannerStore) { }
+  constructor(@Inject(MAT_DIALOG_DATA) private data: Banner, private fb: FormBuilder, private bannerStore: BannerStore) { }
 
   ngOnInit(): void {
     console.log(this.data);
     if (this.data != null) {
       this.bannerForm = this.fb.group({
-        banner_text: [this.data.bannerData.banner_text],
-        banner_text_position: [this.data.bannerData.banner_text_position],
+        banner_text: [this.data.banner_text],
+        banner_text_position: [this.data.banner_text_position],
         banner_image: [''],
-        banner_id: [this.data.bannerData.banner_id]
+        banner_id: [this.data.banner_id]
       });
       this.dialogTitle = 'Edit Banner';
-      this.imageLink = this.data.bannerData.banner_image;
+      this.imageLink = this.data.banner_image;
     } else {
       this.bannerForm = this.fb.group({
         banner_text: [''],

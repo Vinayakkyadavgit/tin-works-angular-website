@@ -1,0 +1,34 @@
+<div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="onSaveProduct()">
+        <h2 mat-dialog-title>{{dialogTitle}}</h2>
+        <input type="hidden" formControlName="product_id">
+        <mat-dialog-content>
+            <mat-form-field>
+                <mat-label>Product Name</mat-label>
+                <input type="text" matInput placeholder="Enter Product Name" name="product_name"
+                    formControlName="product_name">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Product Type</mat-label>
+                <input type="text" matInput placeholder="Enter Product Type" name="product_type"
+                    formControlName="product_type">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Product Description</mat-label>
+                <input type="text" matInput placeholder="Enter Product Description" name="product_description"
+                    formControlName="product_description">
+            </mat-form-field>
+            <div>
+                <input type="file" id="uploadPicture" name="product_image" class="hidden-input"
+                    accept="image/jpeg, .jpeg, image/png, .png, image/pjpeg, .jpg" (change)="selectFile($event)">
+            </div>
+            <div *ngIf="imageLink">
+                <img [src]="imageLink" class="productImg" />
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="this.productForm.invalid">Save</button>
+            <button mat-raised-button mat-mat-dialog-close="true" color="warn" type="button">Cancel</button>
+        </mat-dialog-actions>
+    </form>
+</div>

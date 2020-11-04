@@ -43,7 +43,7 @@ export class BannerStore {
     );
   }
 
-  editBannerData(bannerData: Partial<Banner>, bannerId: number): Observable<Banner> {
+  editBannerData(bannerData, bannerId: number): Observable<Banner> {
     return this.http.post<any>('/api/banner/edit/' + bannerId, bannerData).pipe(
       tap(response => console.log(response)),
       shareReplay(),

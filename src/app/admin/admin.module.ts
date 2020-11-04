@@ -16,6 +16,7 @@ import { BannerMasterComponent } from './banner-master/banner-master.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ProductMasterComponent } from './product-master/product-master.component';
 import { BannerDialogComponent } from './banner-master/banner-dialog/banner-dialog.component';
+import { ProductDialogComponent } from './product-master/product-dialog/product-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BannerDialogComponent } from './banner-master/banner-dialog/banner-dial
     DashboardComponent,
     BannerMasterComponent,
     ProductMasterComponent,
-    BannerDialogComponent
+    BannerDialogComponent,
+    ProductDialogComponent
   ],
   imports: [
     CommonModule,

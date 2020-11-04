@@ -1,40 +1,52 @@
-<div>
-    <mat-table #bannerTable [dataSource]="bannerDataSource">
-        <ng-container matColumnDef="banner_id">
-            <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.banner_id | number}}</mat-cell>
-        </ng-container>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Product Master</mat-card-title>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <button mat-raised-button color="primary" type="button" fxLayout="row" fxLayoutAlign="right" (click)="onAddProduct()">Add</button>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-table #bannerTable [dataSource]="productDataSource">
+            <ng-container matColumnDef="product_id">
+                <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+                <mat-cell *matCellDef="let element;let i = index">{{i + 1| number}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="banner_image">
-            <mat-header-cell *matHeaderCellDef>Image</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-                <img [src]="element.banner_image" style="width: 150px;height:80px;" /> </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="product_name">
+                <mat-header-cell *matHeaderCellDef>Product Name </mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.product_name}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="banner_text">
-            <mat-header-cell *matHeaderCellDef>Banner Text</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.banner_text}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="product_type">
+                <mat-header-cell *matHeaderCellDef>Product Type</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.product_type}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="banner_text_position">
-            <mat-header-cell *matHeaderCellDef>Banner Text Position</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.banner_text_position}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="product_description">
+                <mat-header-cell *matHeaderCellDef>Product Description</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.product_description}}</mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="add_date">
-            <mat-header-cell *matHeaderCellDef>Added on</mat-header-cell>
-            <mat-cell *matCellDef="let element">{{element.add_date| date}}</mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="product_image">
+                <mat-header-cell *matHeaderCellDef>Product Image</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <img [src]="element.product_image" style="width: 150px;height:80px;" /> </mat-cell>
+            </ng-container>
 
-        <ng-container matColumnDef="edit">
-            <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
-            <mat-cell *matCellDef="let element">
-                <button mat-icon-button><mat-icon>edit</mat-icon></button>
-            </mat-cell>
-        </ng-container>
+            <ng-container matColumnDef="add_date">
+                <mat-header-cell *matHeaderCellDef>Added on</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.add_date| date}}</mat-cell>
+            </ng-container>
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
-    </mat-table>
+            <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <button mat-icon-button (click)="onEditProduct()"><mat-icon>edit</mat-icon></button>
+                </mat-cell>
+            </ng-container>
 
-</div>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
+        </mat-table>
+    </mat-card-content>
+</mat-card>

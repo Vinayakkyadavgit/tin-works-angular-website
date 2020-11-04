@@ -9,7 +9,7 @@
         <mat-table #bannerTable [dataSource]="bannerDataSource">
             <ng-container matColumnDef="banner_id">
                 <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-                <mat-cell *matCellDef="let element">{{element.banner_id | number}}</mat-cell>
+                <mat-cell *matCellDef="let element;let i = index">{{i+1 | number}}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="banner_image">
