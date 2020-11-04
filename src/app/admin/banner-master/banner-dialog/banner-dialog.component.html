@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="bannerForm" (ngSubmit)="onSaveBanner()">
+        <h2 mat-dialog-title>{{dialogTitle}}</h2>
+        <input type="hidden" formControlName="banner_id">
+        <mat-dialog-content>
+            <mat-form-field>
+                <mat-label>Banner Text</mat-label>
+                <input type="text" matInput placeholder="Enter Banner Text" name="banner_text" formControlName="banner_text">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Banner Position</mat-label>
+                <input type="text" matInput placeholder="Enter Banner Position" name="banner_text_position" formControlName="banner_text_position">
+                <mat-hint> For e.g. : left,right,center</mat-hint>
+            </mat-form-field>
+            <div>
+                <input type="file" id="uploadPicture" name="banner_image" class="hidden-input" accept="image/jpeg, .jpeg, image/png, .png, image/pjpeg, .jpg" (change)="selectFile($event)">
+            </div>
+            <div *ngIf="imageLink">
+                <img [src]="imageLink" class="bannerImg" />
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="this.bannerForm.invalid">Save</button>
+            <button mat-raised-button mat-mat-dialog-close="true" color="warn" type="button">Cancel</button>
+        </mat-dialog-actions>
+    </form>
+</div>

@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 import { BannerMasterComponent } from './banner-master/banner-master.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { BannerDialogComponent } from './banner-master/banner-dialog/banner-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     AdminSidebarComponent,
     DashboardComponent,
     BannerMasterComponent,
+    BannerDialogComponent
   ],
   imports: [
     CommonModule,
@@ -31,11 +33,11 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     FlexLayoutModule,
     ReactiveFormsModule,
   ],
+  entryComponents: [BannerDialogComponent],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }
-  ]
+  }],
 })
 export class AdminModule { }
