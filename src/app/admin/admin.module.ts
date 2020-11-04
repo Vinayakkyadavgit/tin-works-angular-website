@@ -15,6 +15,7 @@ import { TokenInterceptor } from './interceptors/token-interceptor';
 import { BannerMasterComponent } from './banner-master/banner-master.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ProductMasterComponent } from './product-master/product-master.component';
+import { BannerDialogComponent } from './banner-master/banner-dialog/banner-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ProductMasterComponent } from './product-master/product-master.componen
     DashboardComponent,
     BannerMasterComponent,
     ProductMasterComponent,
+    BannerDialogComponent
   ],
   imports: [
     CommonModule,
@@ -33,11 +35,11 @@ import { ProductMasterComponent } from './product-master/product-master.componen
     FlexLayoutModule,
     ReactiveFormsModule,
   ],
+  entryComponents: [BannerDialogComponent],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
-  }
-  ]
+  }],
 })
 export class AdminModule { }
