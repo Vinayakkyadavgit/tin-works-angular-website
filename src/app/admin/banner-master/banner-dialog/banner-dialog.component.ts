@@ -2,7 +2,7 @@ import { Banner } from './../../model/banner.model';
 import { BannerStore } from './../../services/banner.store';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-banner-dialog',
@@ -13,7 +13,8 @@ export class BannerDialogComponent implements OnInit {
   dialogTitle: string;
   bannerForm: FormGroup;
   imageLink: any;
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private fb: FormBuilder, private bannerStore: BannerStore) { }
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<BannerDialogComponent>,
+    private fb: FormBuilder, private bannerStore: BannerStore) { }
 
   ngOnInit(): void {
     console.log(this.data);
@@ -59,17 +60,27 @@ export class BannerDialogComponent implements OnInit {
 
     if (bannerId) {
       this.bannerStore.editBannerData(formData, +bannerId).subscribe(
-        res => alert('Image Uploaded Successfully'),
+        res => {
+          this.dialogRef.close(1);
+          alert('Banner Updated Successfully');
+        },
         err => alert(err)
       );
     } else {
       this.bannerStore.addBannerData(formData).subscribe(
-        res => alert('Image Uploaded Successfully'),
+        res => {
+          this.dialogRef.close(1);
+          alert('Banner Added Successfully');
+        },
         err => alert(err)
       );
     }
   }
 
+
+  onCancel() {
+    this.dialogRef.close();
+  }
 
 
 

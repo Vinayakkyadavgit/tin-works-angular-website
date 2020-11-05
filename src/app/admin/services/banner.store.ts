@@ -43,9 +43,17 @@ export class BannerStore {
     );
   }
 
-  editBannerData(bannerData: Partial<Banner>, bannerId: number): Observable<Banner> {
-    return this.http.post<any>('/api/banner/edit/' + bannerId, bannerData).pipe(
-      tap(response => console.log(response)),
+  editBannerData(bannerData, bannerId: number): Observable<Banner> {
+    return this.http.post<{ [key: string]: Banner }>('/api/banner/edit/' + bannerId, bannerData).pipe(
+      map(response => response.payload),
+      tap(response => {
+        const banners = this.subject.getValue();
+        const bannerIndex = banners.findIndex(banner => banner.banner_id === bannerId);
+        const newBanner: Banner = { ...banners[bannerIndex], ...response };
+        const newBanners: Banner[] = banners.slice(0);
+        newBanners[bannerIndex] = newBanner;
+        this.subject.next(newBanners);
+      }),
       shareReplay(),
       catchError(error => {
         return throwError(error.error.msg);

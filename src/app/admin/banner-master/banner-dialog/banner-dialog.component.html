@@ -21,7 +21,7 @@
         </mat-dialog-content>
         <mat-dialog-actions>
             <button mat-raised-button color="primary" type="submit" [disabled]="this.bannerForm.invalid">Save</button>
-            <button mat-raised-button mat-mat-dialog-close="true" color="warn" type="button">Cancel</button>
+            <button mat-raised-button (click)="onCancel()" color="warn" type="button">Cancel</button>
         </mat-dialog-actions>
     </form>
 </div>
