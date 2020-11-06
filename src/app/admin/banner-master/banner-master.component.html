@@ -6,10 +6,10 @@
         </div>
     </mat-card-header>
     <mat-card-content>
-        <mat-table #bannerTable [dataSource]="bannerDataSource">
+        <mat-table #bannerTable [dataSource]="bannerDataSource" matSort>
             <ng-container matColumnDef="banner_id">
-                <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-                <mat-cell *matCellDef="let element">{{element.banner_id | number}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
+                <mat-cell *matCellDef="let element;let i=index;">{{i+1 | number}}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="banner_image">
@@ -19,17 +19,17 @@
             </ng-container>
 
             <ng-container matColumnDef="banner_text">
-                <mat-header-cell *matHeaderCellDef>Banner Text</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Banner Text</mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.banner_text}}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="banner_text_position">
-                <mat-header-cell *matHeaderCellDef>Banner Text Position</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Banner Text Position</mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.banner_text_position}}</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="add_date">
-                <mat-header-cell *matHeaderCellDef>Added on</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Added on</mat-header-cell>
                 <mat-cell *matCellDef="let element">{{element.add_date| date}}</mat-cell>
             </ng-container>
 
@@ -43,5 +43,7 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
         </mat-table>
+
+        <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5,10,15]"></mat-paginator>
     </mat-card-content>
 </mat-card>
