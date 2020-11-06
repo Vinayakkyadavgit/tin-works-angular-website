@@ -33,10 +33,11 @@
                 <mat-cell *matCellDef="let element">{{element.add_date| date}}</mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="edit">
+            <ng-container matColumnDef="action">
                 <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     <button mat-icon-button (click)="onEditBanner(element)"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button (click)="onDeleteBanner(element.banner_id)"><mat-icon>delete</mat-icon></button>
                 </mat-cell>
             </ng-container>
 

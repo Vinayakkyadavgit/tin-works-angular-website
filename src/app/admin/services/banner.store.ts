@@ -61,4 +61,17 @@ export class BannerStore {
     );
   }
 
+  deleteBanner(bannerId: number): Observable<any> {
+    return this.http.delete<any>('/api/banner/' + bannerId).pipe(
+      map(res => res.payload),
+      tap(res => {
+
+      }),
+      catchError(error => {
+        return throwError(error.error.msg);
+      })
+
+    );
+  }
+
 }

@@ -14,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class BannerMasterComponent implements OnInit, AfterViewInit {
 
-  displayedColumns = ['banner_id', 'banner_image', 'banner_text', 'banner_text_position', 'add_date', 'edit'];
+  displayedColumns = ['banner_id', 'banner_image', 'banner_text', 'banner_text_position', 'add_date', 'action'];
   bannerDataSource = new MatTableDataSource<Banner>();
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -60,6 +60,14 @@ export class BannerMasterComponent implements OnInit, AfterViewInit {
     });
   }
 
+
+  onDeleteBanner(bannerId: number) {
+    this.bannerStore.deleteBanner(bannerId).subscribe(res => {
+      alert(res.msg);
+    }, err => {
+      alert(err);
+    });
+  }
 
   refresh() {
     this.bannerStore.getBanner().subscribe(res => {
